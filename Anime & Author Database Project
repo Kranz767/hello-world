@@ -1,0 +1,50 @@
+CREATE TABLE anime (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    genre TEXT,
+    rating TEXT,
+    score INTEGER);
+    
+INSERT INTO anime (name, genre, rating, score) VALUES ("Bleach", "Shounen", "Excellent", "88");
+INSERT INTO anime (name, genre, rating, score) VALUES ("Toradora", "Romance", "Very Good", "82");
+INSERT INTO anime (name, genre, rating, score) VALUES ("Kuroko no Baske", "Sports", "Okay", "75");
+INSERT INTO anime (name, genre, rating, score) VALUES ("Parasyte", "Thriller", "Bad", "56");
+INSERT INTO anime (name, genre, rating, score) VALUES ("HunterXHunter", "Shounen", "Excellent", "94");
+INSERT INTO anime (name, genre, rating, score) VALUES ("Clannad", "Romance", "Okay", "77");
+INSERT INTO anime (name, genre, rating, score) VALUES ("Haikyu", "Sports", "Very Good", "85");
+INSERT INTO anime (name, genre, rating, score) VALUES ("Psycho Pass", "Thriller", "Excellent", "96");
+
+
+CREATE TABLE author (
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+author_name TEXT,
+country TEXT,
+genre TEXT
+);
+
+INSERT INTO author (author_name, country, genre) VALUES ("Tite Kubo", "Japan", "Shounen");
+INSERT INTO author (author_name, country, genre) VALUES ("Yuyuko Takemiya", "Japan", "Romance");
+INSERT INTO author (author_name, country, genre) VALUES ("Tadatoshi Fujimaki", "Japan", "Sports");
+INSERT INTO author (author_name, country, genre) Values ("Hitoshi Iwaaki", "Japan", "Thriller");
+INSERT INTO author (author_name, country, genre) VALUES ("Yoshihiro Togashi", "Japan", "Shounen");
+INSERT INTO author (author_name, country, genre) VALUES ("Jun Maeda", "Japan", "Romance");
+INSERT INTO author (author_name, country, genre) VALUES ("Haruichi Furudate", "Japan", "Sports");
+INSERT INTO author (author_name, country, genre) VALUES ("Gen Urobuchi", "Japan", "Thriller");
+
+SELECT name FROM anime
+WHERE genre = "Shounen";
+
+SELECT author_name FROM author
+WHERE genre = "Romance" OR "Shounen";
+
+SELECT name FROM anime
+WHERE genre = "Romance" AND score >= 90;
+
+SELECT name FROM anime
+WHERE genre IN (SELECT genre FROM author WHERE genre = 'Shounen');
+
+SELECT score,COUNT(score) FROM anime
+GROUP BY score;
+
+SELECT AVG(score) FROM anime
+GROUP BY score;
